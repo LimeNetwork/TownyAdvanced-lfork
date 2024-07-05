@@ -128,6 +128,7 @@ public class PlotCommand extends BaseCommand implements CommandExecutor {
 		"shop",
 		"embassy",
 		"arena",
+		"trap",
 		"wilds",
 		"inn",
 		"jail",
@@ -642,7 +643,7 @@ public class PlotCommand extends BaseCommand implements CommandExecutor {
 		// Test we are allowed to work on this plot
 		TownyAPI.getInstance().testPlotOwnerOrThrow(resident, townBlock);
 
-		if (TownBlockType.ARENA.equals(townBlockType) && TownySettings.getOutsidersPreventPVPToggle()) {
+		if ((TownBlockType.ARENA.equals(townBlockType) || TownBlockType.TRAP.equals(townBlockType)) && TownySettings.getOutsidersPreventPVPToggle()) {
 			for (Player target : Bukkit.getOnlinePlayers()) {
 				if (!townBlock.getTownOrNull().hasResident(target) && !player.getName().equals(target.getName()) && townBlock.getWorldCoord().equals(WorldCoord.parseWorldCoord(target)))
 					throw new TownyException(Translatable.of("msg_cant_toggle_pvp_outsider_in_plot"));
@@ -1253,7 +1254,7 @@ public class PlotCommand extends BaseCommand implements CommandExecutor {
 				throw new TownyException(Translatable.of("msg_world_pvp"));
 		}
 		if ((split.contains("pvp")) || (split.trim().equalsIgnoreCase("off"))) {
-			if (townBlock.getType().equals(TownBlockType.ARENA))
+			if ((townBlock.getType().equals(TownBlockType.ARENA) || townBlock.getType().equals(TownBlockType.TRAP)))
 				throw new TownyException(Translatable.of("msg_plot_pvp"));
 		}
 	}
@@ -1699,7 +1700,7 @@ public class PlotCommand extends BaseCommand implements CommandExecutor {
 			// Test we are allowed to work on this plot
 			TownyAPI.getInstance().testPlotOwnerOrThrow(resident, tb); // ignore the return as we
 
-			if (TownBlockType.ARENA.equals(type) && TownySettings.getOutsidersPreventPVPToggle()) {
+			if ((TownBlockType.ARENA.equals(type) || TownBlockType.TRAP.equals(type)) && TownySettings.getOutsidersPreventPVPToggle()) {
 				for (Player target : Bukkit.getOnlinePlayers()) {
 					if (!town.hasResident(target) && !player.getName().equals(target.getName()) && tb.getWorldCoord().equals(WorldCoord.parseWorldCoord(target)))
 						throw new TownyException(Translatable.of("msg_cant_toggle_pvp_outsider_in_plot"));

@@ -200,6 +200,7 @@ public final class TownBlockTypeHandler {
 			
 			double shopCost = parseDouble(config.getString("economy.plot_type_costs.set_commercial"));
 			double arenaCost = parseDouble(config.getString("economy.plot_type_costs.set_arena"));
+			double trapCost = parseDouble(config.getString("economy.plot_type_costs.set_trap"));
 			double embassyCost = parseDouble(config.getString("economy.plot_type_costs.set_embassy"));
 			double wildsCost = parseDouble(config.getString("economy.plot_type_costs.set_wilds"));
 			double innCost = parseDouble(config.getString("economy.plot_type_costs.set_inn"));
@@ -211,6 +212,7 @@ public final class TownBlockTypeHandler {
 			
 			migrations.add(new Migration("shop", "cost", shopCost));
 			migrations.add(new Migration("arena", "cost", arenaCost));
+			migrations.add(new Migration("trap", "cost", trapCost));
 			migrations.add(new Migration("embassy", "cost", embassyCost));
 			migrations.add(new Migration("wilds", "cost", wildsCost));
 			migrations.add(new Migration("inn", "cost", innCost));

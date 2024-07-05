@@ -33,6 +33,8 @@ public class TownBlockType {
 	public static final TownBlockType JAIL = new TownBlockType("Jail"); //Enables setting the jail spawn.		
 	public static final TownBlockType FARM = new TownBlockType("Farm"); //Limits build/destroy-able blocks to the farm plot block list.
 	public static final TownBlockType BANK = new TownBlockType("Bank"); // Enables depositing into town and nation banks, if that has been enabled in the config.
+
+	public static final TownBlockType TRAP = new TownBlockType("Trap"); //Always PVP enabled.
 	
 	private final String name;
 	private final TownBlockData data;
@@ -85,8 +87,9 @@ public class TownBlockType {
 		legacyLookupMap.put(0, "default");
 		legacyLookupMap.put(1, "shop");
 		legacyLookupMap.put(2, "arena");
-		legacyLookupMap.put(3, "embassy");
-		legacyLookupMap.put(4, "wilds");
+		legacyLookupMap.put(3, "trap");
+		legacyLookupMap.put(4, "embassy");
+		legacyLookupMap.put(5, "wilds");
 		legacyLookupMap.put(6, "inn");
 		legacyLookupMap.put(7, "jail");
 		legacyLookupMap.put(8, "farm");
